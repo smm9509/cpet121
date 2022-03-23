@@ -4,7 +4,7 @@ using std::endl;
 
 int main()
 {
-    
+    cout << "nya~" << endl;
 
     return 0;
 }
