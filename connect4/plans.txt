@@ -1,5 +1,7 @@
 grid.cpp and grid.h for having a grid:
+needs GLOBAL CONSTANT for dimensions.
 checkWin function
+
 
 don't pass strings around between functions, just print.
 
