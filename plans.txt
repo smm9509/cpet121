@@ -1,0 +1,9 @@
+grid.cpp and grid.h for having a grid:
+checkWin function
+
+
+Functions to do the following tasks:
+intro
+displayGrid
+getMove (includes handling of bad moves)
+printTally
