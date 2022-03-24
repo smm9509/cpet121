@@ -8,15 +8,16 @@
 
 #pragma once
 #include <vector>
+#include <string>
 
-enum Coins : char16_t {X = 'X', O = 'O', empty = ' '};
+enum Coins : char16_t {x = 'X', o = 'O', empty = ' '};
 
 struct Grid
 {
 public:
 	const size_t WIDTH;
 	const size_t HEIGHT;
-	std::vector<char16_t> places;
+	std::vector<Coins> places;
 
 	//not allowed to make a default board, must specify size
 	Grid() = delete;
@@ -47,4 +48,34 @@ public:
 	//	Purpose:	reading or writing coins on the grid
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	Coins& at(int row, int column);
+
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		Grid::print
+	//	Input: 		characters for lines and fill
+	//	Output:		string with the game grid 
+	//	Purpose:	display the bulk state of the game to the user
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	std::string print(
+		const std::string& TOP_LEFT = " ", 
+		const std::string& TOP_LINE = " ",
+		const std::string& TOP_WYE = " ", 
+		const std::string& TOP_RIGHT = " \n", 
+
+		const std::string& LEFT_LINE = " ", 
+		const std::string& RIGHT_LINE = " \n",
+		const std::string& X_SUB = "X", 
+		const std::string& O_SUB = "O",
+		const std::string& EMPTY_SUB = "_",
+
+		const std::string& LEFT_WYE = " ", 
+		const std::string& RIGHT_WYE = " \n", 
+		const std::string& CROSS = " ", 
+		const std::string& MID_VERT = " ",	
+		const std::string& MID_HORZ = " ",
+
+		const std::string& BOTTOM_LEFT = " ", 
+		const std::string& BOTTOM_LINE = " ",
+		const std::string& BOTTOM_WYE = " ", 
+		const std::string& BOTTOM_RIGHT = " \n"
+	);
 };

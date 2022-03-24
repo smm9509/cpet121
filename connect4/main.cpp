@@ -20,7 +20,7 @@
 //	===============================================================
 
 //Template Header Comment for Function:
-	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		
 	//	Input: 		
 	//	Output:		
@@ -35,7 +35,9 @@ using std::endl;
 
 int main()
 {
-	cout << "nya" << endl;
+	cout << "start nya" << endl;
+	Grid myGrid(7,6);
+	cout << myGrid.print() << endl;
 
 	return 0;
 }
