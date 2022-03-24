@@ -1,17 +1,28 @@
 #pragma once
+#include <vector>
 
 enum Coins : char16_t {X = 'X', O = 'O', empty = ' '};
 
 struct Grid
 {
 public:
-    const unsigned int WIDTH;
-    const unsigned int HEIGHT;
-    Coins* places;
-    
-    Grid() = delete;
-    Grid(const unsigned int WIDTH,  const unsigned int HEIGHT);
+	const size_t WIDTH;
+	const size_t HEIGHT;
+	std::vector<char16_t> places;
 
-    bool checkWin(Coins& winner);
-    Coins* at(int x, int y);
+	//not allowed to make a default board, must specify size
+	Grid() = delete;
+
+	//main constructor
+	//requires grid height and width;
+	//standard Connect4 grid: 6 tall 7 wide
+	Grid(const size_t WIDTH,  const size_t HEIGHT);
+
+	//copy constructor
+	//performs a deep copy when copying
+	Grid::Grid(const Grid& obj);
+
+
+	bool checkWin(Coins& winner);
+	Coins* at(int x, int y);
 };
