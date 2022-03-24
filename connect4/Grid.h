@@ -1,3 +1,11 @@
+//	===============================================================
+//	Title: Grid.h
+//	Course: CPET.121.01/05-06 - Computational Prob Solving I
+//	Developer: smm9509@rit.edu
+//	Date: 2022-03-23
+//	Description: Header for Grid.cpp
+//	===============================================================
+
 #pragma once
 #include <vector>
 
@@ -22,7 +30,21 @@ public:
 	//performs a deep copy when copying
 	Grid(const Grid& obj);
 
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		checkWin
+	//	Input: 		any Coins variable
+	//				, and the connect length required to win
+	//	Output:		returns true if someone has won;
+	//				if yes, writes winning side to winner
+	//	Purpose:	allow stopping the game when won
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	bool checkWin(Coins& winner, int winLength = 4);
 
-	bool checkWin(Coins& winner);
-	Coins* at(int x, int y);
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		Grid::at
+	//	Input: 		row and column on the Grid
+	//	Output:		a reference to the coin at the input location
+	//	Purpose:	reading or writing coins on the grid
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	Coins& at(int row, int column);
 };
