@@ -120,9 +120,7 @@ string Grid::print(
 			}
 			//end line
 			p.append(RIGHT_WYE);
-		}
-		for(int row = 1; row < HEIGHT; row++)
-		{
+			
 			//start line
 			p.append(LEFT_LINE);
 			slot(row, 0);

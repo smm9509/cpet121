@@ -37,6 +37,13 @@ int main()
 {
 	cout << "start nya" << endl;
 	Grid myGrid(7,6);
+	for(int row = 0; row < myGrid.HEIGHT; row++)
+	{
+		for(int col = 0; col < myGrid.WIDTH; col++)
+		{
+			myGrid.at(row, col) = empty;
+		}
+	}
 	cout << myGrid.print() << endl;
 
 	return 0;
