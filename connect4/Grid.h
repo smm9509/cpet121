@@ -20,7 +20,7 @@ public:
 
 	//copy constructor
 	//performs a deep copy when copying
-	Grid::Grid(const Grid& obj);
+	Grid(const Grid& obj);
 
 
 	bool checkWin(Coins& winner);
