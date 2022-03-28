@@ -72,12 +72,12 @@ struct Tally
 	Tally()
 	: ties(0), xWins(0), oWins(0) {}
 
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	Name: 		PrintTally
-//	Input: 		member variables only
-//	Output:		prints a statement with the tallies
-//	Purpose:	satisfy Game Tally Screen.
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		PrintTally
+	//	Input: 		member variables only
+	//	Output:		prints a statement with the tallies
+	//	Purpose:	satisfy Game Tally Screen.
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	void print();
 };
 
@@ -87,27 +87,19 @@ struct Tally
 //				also returns a Coin with the player that goes first
 //	Purpose:	statisfy Welcome Screen in design spec
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Coins welcome()
-{
-	Coins firstPlayer;
-	switch(rand() % 2)
-	{
-	case 0:
-		firstPlayer = x;
-		break;
-	case 1:
-		firstPlayer = o;
-		break;
-	default:
-		assert("0" == "you messed up rand()");
-	}
-	printf("		Welcome to Connect 4\n"
-	"	The goal of Connect 4 is to be the first\n"
-	"player to place four coins in a row, either\n"
-	"horizontally, vertically, or diagonally.\n\n"
-	"%s was selected to go first.\n", (firstPlayer == x) ? X_NAME : O_NAME);
-	return firstPlayer;
-}
+Coins welcome();
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		playerPutCoin
+//	Input: 		player enters which column to play in
+//				also a reference to a Coins var to tell which
+//				player is current
+//	Output:		if the move is valid, places a coin on the grid
+//				also writes which player is next to the reference
+//	Purpose:	allow players to make moves
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void playerPutCoin(Coins currentPlayer);
+
 
 int main()
 {
@@ -130,6 +122,9 @@ int main()
 		while(!gameFinished)
 		{
 			iterations++;
+
+			game.printPlain();
+			
 			
 			bool possibleTie = iterations > game.places.size() - 2;
 			if(possibleTie)
@@ -138,6 +133,22 @@ int main()
 			} else {
 				gameFinished = game.checkWin(winner);
 			}
+		}
+
+		//add results of game to tally
+		switch(winner)
+		{
+		case x:
+			tally.xWins++;
+			break;
+		case o:
+			tally.oWins++;
+			break;
+		case space:
+			tally.ties++;
+			break;
+		default:
+			assert(winner == x || winner == o || winner == space);
 		}
 
 		playing = PlayAgainQ();
@@ -175,4 +186,26 @@ void Tally::print()
 	printf("There were %d ties. %s won %d times,"
 	" and %s won %d times.\n", ties, X_NAME, xWins, 
 	O_NAME, oWins);
+}
+
+Coins welcome()
+{
+	Coins firstPlayer;
+	switch(rand() % 2)
+	{
+	case 0:
+		firstPlayer = x;
+		break;
+	case 1:
+		firstPlayer = o;
+		break;
+	default:
+		assert("0" == "you messed up rand()");
+	}
+	printf("		Welcome to Connect 4\n"
+	"	The goal of Connect 4 is to be the first\n"
+	"player to place four coins in a row, either\n"
+	"horizontally, vertically, or diagonally.\n\n"
+	"%s was selected to go first.\n", (firstPlayer == x) ? X_NAME : O_NAME);
+	return firstPlayer;
 }
