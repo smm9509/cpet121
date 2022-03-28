@@ -138,7 +138,6 @@ int main()
 			} else {
 				gameFinished = game.checkWin(winner);
 			}
-			
 		}
 
 		playing = PlayAgainQ();

@@ -24,7 +24,6 @@ public:
 
 	//main constructor
 	//requires grid height and width;
-	//standard Connect4 grid: 6 tall 7 wide
 	Grid(const size_t WIDTH,  const size_t HEIGHT);
 
 	//copy constructor
