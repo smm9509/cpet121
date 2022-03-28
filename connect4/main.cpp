@@ -44,7 +44,7 @@ int main()
 			myGrid.at(row, col) = space;
 		}
 	}
-	cout << myGrid.print() << endl;
+	cout << myGrid.printPlain() << endl;
 
 	return 0;
 }
