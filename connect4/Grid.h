@@ -10,7 +10,7 @@
 #include <vector>
 #include <string>
 
-enum Coins : char16_t {x = 'X', o = 'O', empty = ' '};
+enum Coins : char16_t {x = 'X', o = 'O', space = ' '};
 
 struct Grid
 {
@@ -56,6 +56,10 @@ public:
 	//	Purpose:	display the bulk state of the game to the user
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	std::string print(
+		const std::string& NUMBERLINE_SEPARATOR_LEFT = " ",
+		const std::string& NUMBERLINE_SEPARATOR_MID = " ",
+		const std::string& NUMBERLINE_SEPARATOR_RIGHT = " \n",
+
 		const std::string& TOP_LEFT = " ", 
 		const std::string& TOP_LINE = " ",
 		const std::string& TOP_WYE = " ", 
@@ -65,7 +69,7 @@ public:
 		const std::string& RIGHT_LINE = " \n",
 		const std::string& X_SUB = "X", 
 		const std::string& O_SUB = "O",
-		const std::string& EMPTY_SUB = "_",
+		const std::string& SPACE_SUB = "_",
 
 		const std::string& LEFT_WYE = " ", 
 		const std::string& RIGHT_WYE = " \n", 
@@ -78,4 +82,11 @@ public:
 		const std::string& BOTTOM_WYE = " ", 
 		const std::string& BOTTOM_RIGHT = " \n"
 	);
+
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		Grid::printPlain
+	//	Input: 		characters for lines and fill
+	//	Output:		string with the game grid 
+	//	Purpose:	run Grid::print with ASCII characters
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 };

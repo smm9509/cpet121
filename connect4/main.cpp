@@ -19,7 +19,7 @@
 //  Description:	
 //	===============================================================
 
-//Template Header Comment for Function:
+//Template Header Comment for Function: 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		
 	//	Input: 		
@@ -41,7 +41,7 @@ int main()
 	{
 		for(int col = 0; col < myGrid.WIDTH; col++)
 		{
-			myGrid.at(row, col) = empty;
+			myGrid.at(row, col) = space;
 		}
 	}
 	cout << myGrid.print() << endl;

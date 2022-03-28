@@ -31,6 +31,10 @@ Coins& Grid::at(int row, int column)
 
 
 string Grid::print(
+	const std::string& NUMBERLINE_SEPARATOR_LEFT/* = " "*/,
+	const std::string& NUMBERLINE_SEPARATOR_MID/* = " "*/,
+	const std::string& NUMBERLINE_SEPARATOR_RIGHT/* = " \n"*/,
+
 	const std::string& TOP_LEFT/* = " "*/, 
 	const std::string& TOP_LINE/* = " "*/,
 	const std::string& TOP_WYE/* = " "*/, 
@@ -40,7 +44,7 @@ string Grid::print(
 	const std::string& RIGHT_LINE/* = " \n"*/,
 	const std::string& X_SUB/* = "X"*/,
 	const std::string& O_SUB/* = "O"*/,
-	const std::string& EMPTY_SUB/* = "_"*/,
+	const std::string& SPACE_SUB/* = "_"*/,
 
 	const std::string& LEFT_WYE/* = " "*/, 
 	const std::string& RIGHT_WYE/* = " \n"*/, 
@@ -68,13 +72,30 @@ string Grid::print(
 		case o:
 			p.append(O_SUB);
 			break;
-		case empty:
+		case space:
 			p.append(EMPTY_SUB);
 			break;
 		default:
 			exit(2);
 		}
 	};
+
+	//number line
+	{
+		//start line
+		p.append(NUMBERLINE_SEPARATOR_LEFT);
+		p.append("1");
+		//fill
+		for(int i = 1; i < WIDTH; i++)
+		{
+			p.append(NUMBERLINE_SEPARATOR_MID);
+			p.append(std::to_string(i+1));
+		}
+		//end line
+		{
+			p.append(NUMBERLINE_SEPARATOR_RIGHT);
+		}
+	}
 
 	//top
 	{
