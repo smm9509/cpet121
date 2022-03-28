@@ -22,6 +22,16 @@ Grid::Grid(const Grid& obj)
 : WIDTH(obj.WIDTH), HEIGHT(obj.HEIGHT)
 {
 	places = vector<Coins>(obj.places);
+
+	//fill grid with empty spaces (initialize)
+	for(int row = 0; row < HEIGHT; row++)
+	{
+		for(int col = 0; col < WIDTH; col++)
+		{
+			at(row, col) = space;
+		}
+	}
+
 }
 
 Coins& Grid::at(int row, int column)

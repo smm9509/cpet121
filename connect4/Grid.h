@@ -42,6 +42,16 @@ public:
 	bool checkWin(Coins& winner, int winLength = 4);
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		checkFull
+	//	Input: 		any Coins variable
+	//	Output:		returns true if the grid is full and no more 
+	//				plays can be made
+	//				also calls checkWin to write empty to winner
+	//	Purpose:	stop when tie or other
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	bool checkFull(Coins& winner);
+
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		Grid::at
 	//	Input: 		row and column on the Grid
 	//	Output:		a reference to the coin at the input location
