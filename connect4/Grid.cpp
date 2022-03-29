@@ -38,6 +38,10 @@ Coins& Grid::at(int row, int column)
 {
 	return places.at(column + row*WIDTH);
 }
+const Coins& Grid::at(int row, int column) const
+{
+	return places.at(column + row*WIDTH);
+}
 
 
 string Grid::print(
@@ -66,7 +70,7 @@ string Grid::print(
 	const std::string& BOTTOM_LINE/* = " "*/,
 	const std::string& BOTTOM_WYE/* = " "*/, 
 	const std::string& BOTTOM_RIGHT/* = " \n"*/
-)
+) const
 {
 	string p = "";
 	p.reserve(WIDTH*3*HEIGHT*3);
@@ -211,7 +215,7 @@ string Grid::printPlain(
 	const std::string& BOTTOM_LINE,
 	const std::string& BOTTOM_WYE, 
 	const std::string& BOTTOM_RIGHT
-)
+) const
 {
 	return print(
 	NUMBERLINE_SEPARATOR_LEFT,
@@ -240,4 +244,24 @@ string Grid::printPlain(
 	BOTTOM_WYE, 
 	BOTTOM_RIGHT
 	);
+}
+
+bool Grid::checkWin(Coins& winner, int winLength) const
+{
+	printf("It is currently assumed impossible to win.\n");
+	return false;
+}
+
+bool Grid::checkFull(Coins& winningSide) const
+{
+	int row = 0;
+	for(int col = 0; col < WIDTH; col++)
+	{
+		if(at(row, col) == space)
+		{
+			return false;
+		}
+	}
+	winningSide = space;
+	return true;
 }

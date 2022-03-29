@@ -44,6 +44,7 @@ const char* const O_NAME = "Player #2";
 const char* const X_NAME = "Player #1";
 const unsigned int CONNECT4_DEFAULT_WIDTH = 7;
 const unsigned int CONNECT4_DEFAULT_HEIGHT = 6;
+const int CONNECT = 4;
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		PlayAgainQ
@@ -129,9 +130,11 @@ int main()
 			bool possibleTie = iterations > game.places.size() - 2;
 			if(possibleTie)
 			{
-				gameFinished = game.checkFull(winner);
+				bool tied = game.checkFull(winner);
+				bool won = game.checkWin(winner, CONNECT);
+				gameFinished = tied || won;
 			} else {
-				gameFinished = game.checkWin(winner);
+				gameFinished = game.checkWin(winner, CONNECT);
 			}
 		}
 

@@ -38,17 +38,19 @@ public:
 	//				if yes, writes winning side to winner
 	//	Purpose:	allow stopping the game when won
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	bool checkWin(Coins& winner, int winLength = 4);
+	bool checkWin(Coins& winner, int winLength = 4) const;
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		checkFull
 	//	Input: 		any Coins variable
 	//	Output:		returns true if the grid is full and no more 
 	//				plays can be made
-	//				also calls checkWin to write empty to winner
+	//				writes empty to winner if it's full
+	//				PLEASE run checkWin afterward to check if
+	//				the last move was a winning move.
 	//	Purpose:	stop when tie or other
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	bool checkFull(Coins& winner);
+	bool checkFull(Coins& winningSide) const;
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		Grid::at
@@ -57,6 +59,7 @@ public:
 	//	Purpose:	reading or writing coins on the grid
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	Coins& at(int row, int column);
+	const Coins& at(int row, int column) const;
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		Grid::print
@@ -90,7 +93,7 @@ public:
 		const std::string& BOTTOM_LINE = " ",
 		const std::string& BOTTOM_WYE = " ", 
 		const std::string& BOTTOM_RIGHT = " \n"
-	);
+	) const;
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		Grid::printPlain
@@ -124,5 +127,5 @@ public:
 		const std::string& BOTTOM_LINE = "---",
 		const std::string& BOTTOM_WYE = "+", 
 		const std::string& BOTTOM_RIGHT = "+\n"
-	);
+	) const;
 };
