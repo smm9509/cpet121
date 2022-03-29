@@ -95,6 +95,7 @@ Coins welcome();
 //	Input: 		player enters which column to play in
 //				also a reference to a Coins var to tell which
 //				player is current
+//				also a reference to the board to put coins onto
 //	Output:		if the move is valid, places a coin on the grid
 //				also writes which player is next to the reference
 //	Purpose:	allow players to make moves
