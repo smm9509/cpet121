@@ -99,7 +99,7 @@ Coins welcome();
 //				also writes which player is next to the reference
 //	Purpose:	allow players to make moves
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void playerPutCoin(Coins currentPlayer);
+void playerPutCoin(Coins& currentPlayer, Grid& board);
 
 
 int main()
@@ -124,7 +124,9 @@ int main()
 		{
 			iterations++;
 
-			game.printPlain();
+			cout << game.printPlain();
+
+			playerPutCoin(currentPlayer, game);
 			
 			
 			bool possibleTie = iterations > game.places.size() - 2;
@@ -205,10 +207,102 @@ Coins welcome()
 	default:
 		assert("0" == "you messed up rand()");
 	}
-	printf("		Welcome to Connect 4\n"
-	"	The goal of Connect 4 is to be the first\n"
-	"player to place four coins in a row, either\n"
-	"horizontally, vertically, or diagonally.\n\n"
-	"%s was selected to go first.\n", (firstPlayer == x) ? X_NAME : O_NAME);
+	printf(
+		"        Welcome to Connect 4\n"
+		"    The goal of Connect 4 is to be the first\n"
+		"player to place four coins in a row, either\n"
+		"horizontally, vertically, or diagonally.\n\n"
+		"%s was selected to go first.\n", 
+		(firstPlayer == x) ? X_NAME : O_NAME
+	);
 	return firstPlayer;
+}
+
+void playerPutCoin(Coins& currentPlayer, Grid& board)
+{
+	int col;
+	bool goodInput = false;
+	int userIn;
+	int userInPrev;
+	bool badInput = false;
+	do
+	{
+		printf("%s's Turn (%c) : Enter Your Move  :",
+			(currentPlayer == x) ? X_NAME : O_NAME,
+			currentPlayer
+			);
+		cin >> userIn;
+		//cout << "userIn == " << userIn << endl;
+
+		//check if move is in range
+		if(userIn > 0 && userIn <= board.WIDTH)
+		{
+			goodInput = true;
+			col = userIn - 1;
+		} else {
+			if(badInput)
+			{
+				//here, both userInPrev and userIn are, hopefully,
+				//	different numbers. If not, user is insane.
+				if(userIn == userInPrev)
+				{
+					printf("You entered the same illegal"
+					" value twice (%d and %d)."
+					" Either the console is broken (more likely)"
+					", or you are insane (unlikely). Goodbye.\n",
+					userIn, userInPrev);
+					assert(userIn != userInPrev);
+				}
+			}
+			cout << "Illegal position. Please re-enter." << endl;
+			userInPrev = userIn;
+			badInput = true;
+		}
+	} while (!goodInput); //repeat until valid column chosen
+
+	bool coinWasPut = false;
+	//go from the bottom of the board up along the selected
+	//	column, looking for an empty space. Put coin there.
+	for(unsigned int row = board.HEIGHT - 1; row >= 0 && row < board.HEIGHT; row--)
+	{
+		if(board.at(row, col) == space)
+		{
+			board.at(row, col) = currentPlayer;
+			coinWasPut = true;
+			//change the current player to the next player
+			switch (currentPlayer)
+			{
+			case x:
+				currentPlayer = o;
+				break;
+			case o:
+				currentPlayer = x;
+				break;
+			
+			default:
+				assert(currentPlayer == x || currentPlayer == o);
+				break;
+			}
+			break;
+		}
+	}
+
+	if(!coinWasPut)
+	{
+		cout << "Move not available. You lost your turn." << endl;
+		//change the current player to the next player
+		switch (currentPlayer)
+		{
+		case x:
+			currentPlayer = o;
+			break;
+		case o:
+			currentPlayer = x;
+			break;
+		
+		default:
+			assert(currentPlayer == x || currentPlayer == o);
+			break;
+		}
+	}
 }
