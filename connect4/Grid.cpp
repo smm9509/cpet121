@@ -8,6 +8,7 @@
 
 #include "Grid.h"
 #include <cassert>
+#include <cstdlib>
 
 using namespace std;
 
@@ -246,9 +247,70 @@ string Grid::printPlain(
 	);
 }
 
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		checkVectWin
+//	Input: 		a grid, row&col to start from, and a direction
+//				to go along (must be vertical horizontal, or
+//				diagonal. Length of vector corresponds to
+//				winLength)
+//				also a Coins variable, will be written to if
+//				there is a winner
+//	Output:		true if the selected position is part of a 
+//				winning play
+//	Purpose:	"private" local function to make checkWin easier.
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+bool checkVectWin(const Grid& const g /*rename me*/, 
+	unsigned int row, unsigned int col,
+	int deltaX, int deltaY, Coins& winner
+)
+{
+	assert(abs(deltaX) == abs(deltaY) || (deltaY == 0 xor deltaX xor 0));
+	//either it's diagonal or it's vertical or horizontal. 
+	//Non-perfect diagonals and vector that goes nowhere not allowed.
+
+	assert(
+		(row > 0 && row < g.HEIGHT) 
+		&&
+		(col > 0 && col < g.WIDTH)
+	);
+	assert(
+		(row + deltaY > 0 && row + deltaY < g.HEIGHT) 
+		&& 
+		(col + deltaX > 0 && col + deltaX < g.WIDTH)
+	);
+	//check that it's in range
+
+	
+}
+
 bool Grid::checkWin(Coins& winner, int winLength) const
 {
-	printf("It is currently assumed impossible to win.\n");
+	// need to check in staggered patterns ...
+	// example with horizontal win
+	// 	1234567
+	// 	====
+	//	 ====
+	//	  ====
+	//	   ====
+	//repeat the above pattern on every row
+	//vertical:
+	//	1 |
+	//	2 ||
+	//	3 |||
+	//	4 |||
+	//	5  ||
+	//	6   |
+	//repeat the above pattern on every column
+	// for diagonals, crop the range of the whole array (6x7)
+	// by winLength-1 (3x4), then shoot vectors from each point
+	// in the cropped zone.
+	// 	  1 2 3 4 5 6 7
+	//	1 ⭨ ⭨ ⭨ ⭨ 
+ 	 //	2 ⭨ ⭨ ⭨ ⭨ ⭨ 
+ 	//	3 ⭨ ⭨ ⭨ ⭨ ⭨ ⭨ 
+	//	4   ⭨ ⭨ ⭨ ⭨ ⭨ ⭨
+	//	5     ⭨ ⭨ ⭨ ⭨ ⭨
+	//	6       ⭨ ⭨ ⭨ ⭨
 	return false;
 }
 

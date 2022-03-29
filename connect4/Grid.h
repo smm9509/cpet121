@@ -35,7 +35,9 @@ public:
 	//	Input: 		any Coins variable
 	//				, and the connect length required to win
 	//	Output:		returns true if someone has won;
-	//				if yes, writes winning side to winner
+	//				if yes, writes winning side to winner.
+	//				When return value is true, winner is garunteed
+	//				to be overwritten (useful if unitnitialized).
 	//	Purpose:	allow stopping the game when won
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	bool checkWin(Coins& winner, int winLength = 4) const;
@@ -44,11 +46,14 @@ public:
 	//	Name: 		checkFull
 	//	Input: 		any Coins variable
 	//	Output:		returns true if the grid is full and no more 
-	//				plays can be made
-	//				writes empty to winner if it's full
-	//				PLEASE run checkWin afterward to check if
-	//				the last move was a winning move.
-	//	Purpose:	stop when tie or other
+		//				plays can be made
+		//				writes empty to winner if it's full
+		//				PLEASE run checkWin afterward to check if
+		//				the last move was a winning move.
+		//			When return value is true, winningSide is 
+		//				garunteed to be overwritten with Coins::space
+		//				(useful if unitnitialized).
+	//	Purpose:	stop when tie
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	bool checkFull(Coins& winningSide) const;
 
