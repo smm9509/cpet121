@@ -106,24 +106,24 @@ public:
 		const std::string& NUMBERLINE_SEPARATOR_MID = "   ",
 		const std::string& NUMBERLINE_SEPARATOR_RIGHT = "  \n",
 
-		const std::string& TOP_LEFT = " ", 
+		const std::string& TOP_LEFT = "  ", 
 		const std::string& TOP_LINE = "   ",
 		const std::string& TOP_WYE = " ", 
 		const std::string& TOP_RIGHT = " \n", 
 
-		const std::string& LEFT_LINE = "|", 
+		const std::string& LEFT_LINE = " |", 
 		const std::string& RIGHT_LINE = "|\n",
 		const std::string& X_SUB = " X ", 
 		const std::string& O_SUB = " O ",
 		const std::string& SPACE_SUB = "   ",
 
-		const std::string& LEFT_WYE = "+", 
+		const std::string& LEFT_WYE = " +", 
 		const std::string& RIGHT_WYE = "+\n", 
 		const std::string& CROSS = "+", 
 		const std::string& MID_VERT = "|",	
 		const std::string& MID_HORZ = "---",
 
-		const std::string& BOTTOM_LEFT = "+", 
+		const std::string& BOTTOM_LEFT = " +", 
 		const std::string& BOTTOM_LINE = "---",
 		const std::string& BOTTOM_WYE = "+", 
 		const std::string& BOTTOM_RIGHT = "+\n"

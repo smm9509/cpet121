@@ -16,22 +16,22 @@ Grid::Grid(const size_t WIDTH,  const size_t HEIGHT)
 {
 	assert(WIDTH > 0 && HEIGHT > 0);
 	places = vector<Coins>(WIDTH*HEIGHT);
-};
-
-Grid::Grid(const Grid& obj)
-: WIDTH(obj.WIDTH), HEIGHT(obj.HEIGHT)
-{
-	places = vector<Coins>(obj.places);
-
 	//fill grid with empty spaces (initialize)
 	for(int row = 0; row < HEIGHT; row++)
 	{
 		for(int col = 0; col < WIDTH; col++)
 		{
 			at(row, col) = space;
+			//printf("wrote [%c] to (%d, %d)\n", space, col, row);
 		}
 	}
 
+};
+
+Grid::Grid(const Grid& obj)
+: WIDTH(obj.WIDTH), HEIGHT(obj.HEIGHT)
+{
+	places = vector<Coins>(obj.places);
 }
 
 Coins& Grid::at(int row, int column)

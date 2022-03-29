@@ -42,8 +42,8 @@ using std::string;
 //some bits of text that I don't want to be "magic numbers"
 const char* const O_NAME = "Player #2";
 const char* const X_NAME = "Player #1";
-const unsigned int CONNECT4_DEFAULT_WIDTH = 7;
-const unsigned int CONNECT4_DEFAULT_HEIGHT = 6;
+const unsigned int CONNECT4_WIDTH = 3;
+const unsigned int CONNECT4_HEIGHT = 2;
 const int CONNECT = 4;
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -118,7 +118,7 @@ int main()
 	{
 		Coins winner;
 		bool gameFinished = false;
-		Grid game = Grid(CONNECT4_DEFAULT_WIDTH, CONNECT4_DEFAULT_HEIGHT);
+		Grid game = Grid(CONNECT4_WIDTH, CONNECT4_HEIGHT);
 		int iterations = 0;
 		while(!gameFinished)
 		{
@@ -139,18 +139,21 @@ int main()
 				gameFinished = game.checkWin(winner, CONNECT);
 			}
 		}
-
-		//add results of game to tally
+		cout << game.printPlain();
+		//add results of game to tally and print result
 		switch(winner)
 		{
 		case x:
 			tally.xWins++;
+			printf("%s was the winner.\n", X_NAME);
 			break;
 		case o:
 			tally.oWins++;
+			printf("%s was the winner.\n", O_NAME);
 			break;
 		case space:
 			tally.ties++;
+			printf("The game ended in a tie.\n");
 			break;
 		default:
 			assert(winner == x || winner == o || winner == space);
@@ -159,18 +162,6 @@ int main()
 		playing = PlayAgainQ();
 	}
 	tally.print();
-
-
-	cout << "start meow" << endl;
-	Grid myGrid(7,6);
-	for(int row = 0; row < myGrid.HEIGHT; row++)
-	{
-		for(int col = 0; col < myGrid.WIDTH; col++)
-		{
-			myGrid.at(row, col) = space;
-		}
-	}
-	cout << myGrid.printPlain() << endl;
 
 	return 0;
 }
