@@ -280,7 +280,12 @@ bool checkVectWin(const Grid& const g /*rename me*/,
 	);
 	//check that it's in range
 
+	//set iterator to 0, 1, or -1
+	signed int xIter = deltaX == 0 ? 0 : deltaX/abs(deltaX);
+	signed int yIter = deltaY == 0 ? 0 : deltaY/abs(deltaY);
+
 	
+
 }
 
 bool Grid::checkWin(Coins& winner, int winLength) const
