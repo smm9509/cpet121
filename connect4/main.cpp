@@ -74,12 +74,21 @@ struct Tally
 	: ties(0), xWins(0), oWins(0) {}
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	//	Name: 		PrintTally
+	//	Name: 		print
 	//	Input: 		member variables only
 	//	Output:		prints a statement with the tallies
 	//	Purpose:	satisfy Game Tally Screen.
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	void print();
+
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		finishGame
+	//	Input: 		the winner
+	//	Output:		adds to tally and prints result
+	//	Purpose:	notify player that game is finished, and
+	//				keep track of player wins.
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	void finishGame(Coins winner);
 };
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -101,6 +110,8 @@ Coins welcome();
 //	Purpose:	allow players to make moves
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void playerPutCoin(Coins& currentPlayer, Grid& board);
+
+
 
 
 int main()
@@ -141,25 +152,8 @@ int main()
 			}
 		}
 		cout << game.printPlain();
-		//add results of game to tally and print result
-		switch(winner)
-		{
-		case x:
-			tally.xWins++;
-			printf("%s was the winner.\n", X_NAME);
-			break;
-		case o:
-			tally.oWins++;
-			printf("%s was the winner.\n", O_NAME);
-			break;
-		case space:
-			tally.ties++;
-			printf("The game ended in a tie.\n");
-			break;
-		default:
-			assert(winner == x || winner == o || winner == space);
-		}
 
+		tally.finishGame(winner);
 		playing = PlayAgainQ();
 	}
 	tally.print();
@@ -183,6 +177,30 @@ void Tally::print()
 	printf("There were %d ties. %s won %d times,"
 	" and %s won %d times.\n", ties, X_NAME, xWins, 
 	O_NAME, oWins);
+}
+
+void Tally::finishGame(Coins winner)
+{
+	//add results of game to tally and print result
+
+	switch(winner)
+	{
+	case x:
+		tally.xWins++;
+		printf("%s was the winner.\n", X_NAME);
+		break;
+	case o:
+		tally.oWins++;
+		printf("%s was the winner.\n", O_NAME);
+		break;
+	case space:
+		tally.ties++;
+		printf("The game ended in a tie.\n");
+		break;
+	default:
+		assert(winner == x || winner == o || winner == space);
+	}
+
 }
 
 Coins welcome()
