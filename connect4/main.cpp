@@ -44,7 +44,7 @@ const char* const O_NAME = "Player #2";
 const char* const X_NAME = "Player #1";
 const unsigned int CONNECT4_WIDTH = 3;
 const unsigned int CONNECT4_HEIGHT = 2;
-const int CONNECT = 4;
+const int CONNECT = 2;
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		PlayAgainQ
@@ -200,6 +200,7 @@ Coins welcome()
 		assert("0" == "you messed up rand()");
 	}
 	printf(
+		"myaa."
 		"        Welcome to Connect 4\n"
 		"    The goal of Connect 4 is to be the first\n"
 		"player to place four coins in a row, either\n"

@@ -107,7 +107,7 @@ public:
 	//	Purpose:	run Grid::print with ASCII characters
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	std::string printPlain(
-		const std::string& NUMBERLINE_SEPARATOR_LEFT = "  ",
+		const std::string& NUMBERLINE_SEPARATOR_LEFT = "   ",
 		const std::string& NUMBERLINE_SEPARATOR_MID = "   ",
 		const std::string& NUMBERLINE_SEPARATOR_RIGHT = "  \n",
 
