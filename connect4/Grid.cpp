@@ -29,10 +29,10 @@ Grid::Grid(const size_t WIDTH,  const size_t HEIGHT)
 
 };
 
-Grid::Grid(const Grid& obj)
-: WIDTH(obj.WIDTH), HEIGHT(obj.HEIGHT)
+Grid::Grid(const Grid& OBJ)
+: WIDTH(OBJ.WIDTH), HEIGHT(OBJ.HEIGHT)
 {
-	places = vector<Coins>(obj.places);
+	places = vector<Coins>(OBJ.places);
 }
 
 Coins& Grid::at(int row, int column)

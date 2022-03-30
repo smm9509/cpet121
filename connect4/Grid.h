@@ -28,7 +28,7 @@ public:
 
 	//copy constructor
 	//performs a deep copy when copying
-	Grid(const Grid& obj);
+	Grid(const Grid& OBJ);
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//	Name: 		checkWin
@@ -61,7 +61,8 @@ public:
 	//	Name: 		Grid::at
 	//	Input: 		row and column on the Grid
 	//	Output:		a reference to the coin at the input location
-	//	Purpose:	reading or writing coins on the grid
+	//	Purpose:	reading (const version) or writing coins
+	//				on the grid
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	Coins& at(int row, int column);
 	const Coins& at(int row, int column) const;

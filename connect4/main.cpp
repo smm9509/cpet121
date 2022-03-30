@@ -42,9 +42,9 @@ using std::string;
 //some bits of text that I don't want to be "magic numbers"
 const char* const O_NAME = "Player #2";
 const char* const X_NAME = "Player #1";
-const unsigned int CONNECT4_WIDTH = 3;
-const unsigned int CONNECT4_HEIGHT = 2;
-const int CONNECT = 2;
+const unsigned int CONNECT4_WIDTH = 7;
+const unsigned int CONNECT4_HEIGHT = 6;
+const int CONNECT = 4;
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		PlayAgainQ
