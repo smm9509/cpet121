@@ -186,15 +186,15 @@ void Tally::finishGame(Coins winner)
 	switch(winner)
 	{
 	case x:
-		tally.xWins++;
+		xWins++;
 		printf("%s was the winner.\n", X_NAME);
 		break;
 	case o:
-		tally.oWins++;
+		oWins++;
 		printf("%s was the winner.\n", O_NAME);
 		break;
 	case space:
-		tally.ties++;
+		ties++;
 		printf("The game ended in a tie.\n");
 		break;
 	default:
