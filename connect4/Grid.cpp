@@ -8,6 +8,7 @@
 
 #include "Grid.h"
 #include <cassert>
+#include <cstdlib>
 
 using namespace std;
 
@@ -16,25 +17,29 @@ Grid::Grid(const size_t WIDTH,  const size_t HEIGHT)
 {
 	assert(WIDTH > 0 && HEIGHT > 0);
 	places = vector<Coins>(WIDTH*HEIGHT);
-};
-
-Grid::Grid(const Grid& obj)
-: WIDTH(obj.WIDTH), HEIGHT(obj.HEIGHT)
-{
-	places = vector<Coins>(obj.places);
-
 	//fill grid with empty spaces (initialize)
 	for(int row = 0; row < HEIGHT; row++)
 	{
 		for(int col = 0; col < WIDTH; col++)
 		{
 			at(row, col) = space;
+			//printf("wrote [%c] to (%d, %d)\n", space, col, row);
 		}
 	}
 
+};
+
+Grid::Grid(const Grid& OBJ)
+: WIDTH(OBJ.WIDTH), HEIGHT(OBJ.HEIGHT)
+{
+	places = vector<Coins>(OBJ.places);
 }
 
 Coins& Grid::at(int row, int column)
+{
+	return places.at(column + row*WIDTH);
+}
+const Coins& Grid::at(int row, int column) const
 {
 	return places.at(column + row*WIDTH);
 }
@@ -66,7 +71,7 @@ string Grid::print(
 	const std::string& BOTTOM_LINE/* = " "*/,
 	const std::string& BOTTOM_WYE/* = " "*/, 
 	const std::string& BOTTOM_RIGHT/* = " \n"*/
-)
+) const
 {
 	string p = "";
 	p.reserve(WIDTH*3*HEIGHT*3);
@@ -211,7 +216,7 @@ string Grid::printPlain(
 	const std::string& BOTTOM_LINE,
 	const std::string& BOTTOM_WYE, 
 	const std::string& BOTTOM_RIGHT
-)
+) const
 {
 	return print(
 	NUMBERLINE_SEPARATOR_LEFT,
@@ -240,4 +245,183 @@ string Grid::printPlain(
 	BOTTOM_WYE, 
 	BOTTOM_RIGHT
 	);
+}
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		checkVectWin
+//	Input: 		a grid, row&col to start from, and a direction
+//				to go along (must be vertical horizontal, or
+//				diagonal. Length of vector corresponds to
+//				winLength)
+//				also a Coins variable, will be written to if
+//				there is a winner
+//	Output:		true if the selected position is part of a 
+//				winning play
+//	Purpose:	"private" local function to make checkWin easier.
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+bool checkVectWin(const Grid& GRID, 
+	const unsigned int ROW, const unsigned int COL,
+	int deltaX, int deltaY, Coins& winner
+)
+{
+	assert(abs(deltaX) == abs(deltaY) || (deltaY == 0 xor deltaX == 0));
+	//either it's diagonal or it's vertical or horizontal. 
+	//Non-perfect diagonals and vector that goes nowhere not allowed.
+
+	assert(ROW >= 0 && ROW < GRID.HEIGHT);
+	assert(COL >= 0 && COL < GRID.WIDTH);
+	assert(ROW + deltaY >= 0 && ROW + deltaY < GRID.HEIGHT);
+	assert(COL + deltaX >= 0 && COL + deltaX < GRID.WIDTH);
+	//check that it's in range
+
+	//set iterator to 0, 1, or -1
+	signed int xIter = deltaX == 0 ? 0 : deltaX/abs(deltaX);
+	signed int yIter = deltaY == 0 ? 0 : deltaY/abs(deltaY);
+	//find winLength, instead of taking it as a parameter and asserting
+	signed int length = 1 + (deltaX ? abs(deltaX) : abs(deltaY)); //see first assertion
+
+	unsigned int row = ROW;
+	unsigned int col = COL;
+
+	//first iteration (i = 0) needs to be different
+	assert(
+		(row >= 0 && row < GRID.HEIGHT) 
+		&&
+		(col >= 0 && col < GRID.WIDTH)
+	);
+	Coins possibleWinner = GRID.at(row, col);
+	if(possibleWinner == space)
+	{
+		return false;
+	}
+	row += yIter;
+	col += xIter;
+
+	for(int i = 1; i < length; i++)
+	{
+		assert(
+			(row >= 0 && row < GRID.HEIGHT) 
+			&&
+			(col >= 0 && col < GRID.WIDTH)
+		);
+		if(possibleWinner != GRID.at(row, col))
+		{
+			return false;
+		}
+		row += yIter;
+		col += xIter;
+	}
+	//all coins under the vector are now equal to possibleWinner
+
+	winner = possibleWinner;
+	return true;
+}
+
+bool Grid::checkWin(Coins& winner, const int WIN_LENGTH) const
+{
+	// need to check in staggered patterns ...
+	// example with horizontal win
+	// 	1234567
+	// 	====
+	//	 ====
+	//	  ====
+	//	   ====
+	//repeat the above pattern on every row
+
+	for(int row = 0; row < HEIGHT; row++)
+	{
+		for(int col = 0; col <= WIDTH-WIN_LENGTH; col++)
+		{
+			if(checkVectWin(
+				*this, row, col, 
+				(WIN_LENGTH-1), 0, //going horizontal
+				winner)
+			)
+			{
+				return true;
+			}
+		}
+	}
+
+	//vertical:
+	//	1 |
+	//	2 ||
+	//	3 |||
+	//	4 |||
+	//	5  ||
+	//	6   |
+	//repeat the above pattern on every column
+
+	for(int row = 0; row <= HEIGHT-WIN_LENGTH; row++)
+	{
+		for(int col = 0; col < WIDTH; col++)
+		{
+			if(checkVectWin(
+				*this, row, col, 
+				0, (WIN_LENGTH-1), //going vertical
+				winner)
+			)
+			{
+				return true;
+			}
+		}
+	}
+
+	// for diagonals, crop the range of the whole array (6x7)
+	// by winLength-1 (3x4), then shoot vectors from each point
+	// in the cropped zone.
+	// 	  1 2 3 4 5 6 7
+	//	1*⭨*⭨*⭨*⭨ 
+ 	//	2*⭨*⭨*⭨*⭨ ⭨ 
+ 	//	3*⭨*⭨*⭨*⭨ ⭨ ⭨ 
+	//	4   ⭨ ⭨ ⭨ ⭨ ⭨ ⭨
+	//	5     ⭨ ⭨ ⭨ ⭨ ⭨
+	//	6       ⭨ ⭨ ⭨ ⭨
+
+	for(int row = 0; row <= HEIGHT-WIN_LENGTH; row++)
+	{
+		for(int col = 0; col <= WIDTH-WIN_LENGTH; col++)
+		{
+			if(checkVectWin(
+				*this, row, col, 
+				(WIN_LENGTH-1), (WIN_LENGTH-1), //going diagonal down-left
+				winner)
+			)
+			{
+				return true;
+			}
+		}
+	}
+	for(int row = 0; row <= HEIGHT-WIN_LENGTH; row++)
+	{
+		for(int col = WIDTH-1; col >= WIN_LENGTH-1; col--)
+		{
+			if(checkVectWin(
+				*this, row, col, 
+				-(WIN_LENGTH-1), (WIN_LENGTH-1), //going diagonal down-right
+				winner)
+			)
+			{
+				return true;
+			}
+		}
+	}
+
+
+
+	return false;
+}
+
+bool Grid::checkFull(Coins& winningSide) const
+{
+	int row = 0;
+	for(int col = 0; col < WIDTH; col++)
+	{
+		if(at(row, col) == space)
+		{
+			return false;
+		}
+	}
+	winningSide = space;
+	return true;
 }

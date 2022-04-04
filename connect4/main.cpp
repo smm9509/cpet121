@@ -42,8 +42,9 @@ using std::string;
 //some bits of text that I don't want to be "magic numbers"
 const char* const O_NAME = "Player #2";
 const char* const X_NAME = "Player #1";
-const unsigned int CONNECT4_DEFAULT_WIDTH = 7;
-const unsigned int CONNECT4_DEFAULT_HEIGHT = 6;
+const unsigned int CONNECT4_WIDTH = 7;
+const unsigned int CONNECT4_HEIGHT = 6;
+const int CONNECT = 4;
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		PlayAgainQ
@@ -73,12 +74,21 @@ struct Tally
 	: ties(0), xWins(0), oWins(0) {}
 
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	//	Name: 		PrintTally
+	//	Name: 		print
 	//	Input: 		member variables only
 	//	Output:		prints a statement with the tallies
 	//	Purpose:	satisfy Game Tally Screen.
 	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	void print();
+
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	//	Name: 		finishGame
+	//	Input: 		the winner
+	//	Output:		adds to tally and prints result
+	//	Purpose:	notify player that game is finished, and
+	//				keep track of player wins.
+	//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	void finishGame(Coins winner);
 };
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -94,11 +104,14 @@ Coins welcome();
 //	Input: 		player enters which column to play in
 //				also a reference to a Coins var to tell which
 //				player is current
+//				also a reference to the board to put coins onto
 //	Output:		if the move is valid, places a coin on the grid
 //				also writes which player is next to the reference
 //	Purpose:	allow players to make moves
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void playerPutCoin(Coins currentPlayer);
+void playerPutCoin(Coins& currentPlayer, Grid& board);
+
+
 
 
 int main()
@@ -117,55 +130,33 @@ int main()
 	{
 		Coins winner;
 		bool gameFinished = false;
-		Grid game = Grid(CONNECT4_DEFAULT_WIDTH, CONNECT4_DEFAULT_HEIGHT);
+		Grid game = Grid(CONNECT4_WIDTH, CONNECT4_HEIGHT);
 		int iterations = 0;
 		while(!gameFinished)
 		{
 			iterations++;
 
-			game.printPlain();
+			cout << game.printPlain();
+
+			playerPutCoin(currentPlayer, game);
 			
 			
 			bool possibleTie = iterations > game.places.size() - 2;
 			if(possibleTie)
 			{
-				gameFinished = game.checkFull(winner);
+				bool tied = game.checkFull(winner);
+				bool won = game.checkWin(winner, CONNECT);
+				gameFinished = tied || won;
 			} else {
-				gameFinished = game.checkWin(winner);
+				gameFinished = game.checkWin(winner, CONNECT);
 			}
 		}
+		cout << game.printPlain();
 
-		//add results of game to tally
-		switch(winner)
-		{
-		case x:
-			tally.xWins++;
-			break;
-		case o:
-			tally.oWins++;
-			break;
-		case space:
-			tally.ties++;
-			break;
-		default:
-			assert(winner == x || winner == o || winner == space);
-		}
-
+		tally.finishGame(winner);
 		playing = PlayAgainQ();
 	}
 	tally.print();
-
-
-	cout << "start meow" << endl;
-	Grid myGrid(7,6);
-	for(int row = 0; row < myGrid.HEIGHT; row++)
-	{
-		for(int col = 0; col < myGrid.WIDTH; col++)
-		{
-			myGrid.at(row, col) = space;
-		}
-	}
-	cout << myGrid.printPlain() << endl;
 
 	return 0;
 }
@@ -188,6 +179,30 @@ void Tally::print()
 	O_NAME, oWins);
 }
 
+void Tally::finishGame(Coins winner)
+{
+	//add results of game to tally and print result
+
+	switch(winner)
+	{
+	case x:
+		xWins++;
+		printf("%s was the winner.\n", X_NAME);
+		break;
+	case o:
+		oWins++;
+		printf("%s was the winner.\n", O_NAME);
+		break;
+	case space:
+		ties++;
+		printf("The game ended in a tie.\n");
+		break;
+	default:
+		assert(winner == x || winner == o || winner == space);
+	}
+
+}
+
 Coins welcome()
 {
 	Coins firstPlayer;
@@ -202,10 +217,103 @@ Coins welcome()
 	default:
 		assert("0" == "you messed up rand()");
 	}
-	printf("		Welcome to Connect 4\n"
-	"	The goal of Connect 4 is to be the first\n"
-	"player to place four coins in a row, either\n"
-	"horizontally, vertically, or diagonally.\n\n"
-	"%s was selected to go first.\n", (firstPlayer == x) ? X_NAME : O_NAME);
+	printf(
+		"myaa."
+		"        Welcome to Connect 4\n"
+		"    The goal of Connect 4 is to be the first\n"
+		"player to place four coins in a row, either\n"
+		"horizontally, vertically, or diagonally.\n\n"
+		"%s was selected to go first.\n", 
+		(firstPlayer == x) ? X_NAME : O_NAME
+	);
 	return firstPlayer;
+}
+
+void playerPutCoin(Coins& currentPlayer, Grid& board)
+{
+	int col;
+	bool goodInput = false;
+	int userIn;
+	int userInPrev;
+	bool badInput = false;
+	do
+	{
+		printf("%s's Turn (%c) : Enter Your Move  :",
+			(currentPlayer == x) ? X_NAME : O_NAME,
+			currentPlayer
+			);
+		cin >> userIn;
+		//cout << "userIn == " << userIn << endl;
+
+		//check if move is in range
+		if(userIn > 0 && userIn <= board.WIDTH)
+		{
+			goodInput = true;
+			col = userIn - 1;
+		} else {
+			if(badInput)
+			{
+				//here, both userInPrev and userIn are, hopefully,
+				//	different numbers. If not, user is insane.
+				if(userIn == userInPrev)
+				{
+					printf("You entered the same illegal"
+					" value twice (%d and %d)."
+					" Either the console is broken (more likely)"
+					", or you are insane (unlikely). Goodbye.\n",
+					userIn, userInPrev);
+					assert(userIn != userInPrev);
+				}
+			}
+			cout << "Illegal position. Please re-enter." << endl;
+			userInPrev = userIn;
+			badInput = true;
+		}
+	} while (!goodInput); //repeat until valid column chosen
+
+	bool coinWasPut = false;
+	//go from the bottom of the board up along the selected
+	//	column, looking for an empty space. Put coin there.
+	for(unsigned int row = board.HEIGHT - 1; row >= 0 && row < board.HEIGHT; row--)
+	{
+		if(board.at(row, col) == space)
+		{
+			board.at(row, col) = currentPlayer;
+			coinWasPut = true;
+			//change the current player to the next player
+			switch (currentPlayer)
+			{
+			case x:
+				currentPlayer = o;
+				break;
+			case o:
+				currentPlayer = x;
+				break;
+			
+			default:
+				assert(currentPlayer == x || currentPlayer == o);
+				break;
+			}
+			break;
+		}
+	}
+
+	if(!coinWasPut)
+	{
+		cout << "Move not available. You lost your turn." << endl;
+		//change the current player to the next player
+		switch (currentPlayer)
+		{
+		case x:
+			currentPlayer = o;
+			break;
+		case o:
+			currentPlayer = x;
+			break;
+		
+		default:
+			assert(currentPlayer == x || currentPlayer == o);
+			break;
+		}
+	}
 }
