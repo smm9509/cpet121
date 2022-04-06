@@ -1,3 +1,13 @@
+//	===============================================================
+//  Filename:		main.cpp
+//	Title:			Homework #1
+//	Course:			CPET.121.01/05-06 - Computational Prob Solving I
+//	Developer:		smm9509@rit.edu
+//	Date:			2022-04-06
+//  Description:    write the average and sum of 25 vectors to file
+//	===============================================================
+
+
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
