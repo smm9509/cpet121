@@ -36,7 +36,7 @@ int main()
     ofstream outF;
     string outFname;
     cin.ignore();
-    cout << "Enter filename : ";
+    cout << "Enter filename (expecting \"s_a.dat\"): ";
     getline(cin, outFname);
     outF.open(outFname.c_str());
     if(outF.fail())
@@ -46,7 +46,7 @@ int main()
         exit(1);
     }
 
-    outF << average << ' ' << sum << ' ' << endl;
+    outF << sum << ' ' << average << ' ' << endl;
 
     return 0;
 }
