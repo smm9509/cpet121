@@ -1,0 +1,3 @@
+Lawler    $ 456.58 
+Jones     $ 572.80 
+Potter    $ 789.30 
