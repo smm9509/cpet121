@@ -19,24 +19,32 @@ int main()
         exit(1);
     }
 
-    ofstream outF;
-    outF.open("lamb2.txt");
-    if(outF.fail())
-    {
-        exit(2);
-    }
-
     char data;
+    unsigned int vowelCount = 0;
 
     inF.get(data); //can also use std::getline from <string>
     while(!inF.eof())
     {
-        outF.put(data);
+        switch(data)
+        {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+        case 'y':
+            vowelCount++;
+            break;
+        default:
+            break;
+        }
+
         inF.get(data);
     }
 
     inF.close();
-    outF.close();
+
+    printf("there are %d vowels in lamb1.txt", vowelCount);
 
     return 0;
 }
