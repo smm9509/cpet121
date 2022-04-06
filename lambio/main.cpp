@@ -20,12 +20,12 @@ int main()
     }
 
     char data;
-    unsigned int vowelCount = 0;
+    int vowelCount = 0;
 
     inF.get(data); //can also use std::getline from <string>
     while(!inF.eof())
     {
-        switch(data)
+        switch(tolower(data))
         {
         case 'a':
         case 'e':
