@@ -13,7 +13,9 @@
 
 using namespace std;
 
-double inputFunction(const string& query = "")
+double inputFunction(
+    const string& query // = ""
+)
 {
 	outputFunction(query);
 	double temp;
