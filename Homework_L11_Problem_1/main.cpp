@@ -16,22 +16,23 @@ using namespace std;
 
 void print(const string& output)
 {
-    cout << output << endl;
+	cout << output << endl;
 }
 
 double inputNum(const string& query = "")
 {
-    print(query);
-    double temp;
-    cin >> temp;
-    return temp;
+	print(query);
+	double temp;
+	cin >> temp;
+	return temp;
 }
 
 int main()
 {
-    print("square: " + to_string(square(inputNum("number to square:"))));
-    print("cube: " + to_string(cube(inputNum("number to cube:"))));
-    print("abs: " + to_string(myAbsoluteVal(inputNum("number to abs:"))));
+	print("square: " + to_string(square(inputNum("number to square:"))));
+	print("cube: " + to_string(cube(inputNum("number to cube:"))));
+	print("abolute value: " + to_string(myAbsoluteVal(inputNum("number to find abolute value:"))));
+	print("z = y ^ x, z: " + to_string(zEqualsYToTheXPower(inputNum("x: "), inputNum("z = y ^ x,\ny: "))));
 
-    return 0;
+	return 0;
 }

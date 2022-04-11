@@ -14,3 +14,5 @@ double square(double input);
 double cube(double input);
 // myAbsoluteVal.cpp
 double myAbsoluteVal(double input);
+// zEqualsYToTheXPowerFunction.cpp
+double zEqualsYToTheXPower(double x, double y);

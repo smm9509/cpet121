@@ -12,5 +12,5 @@
 
 double myAbsoluteVal(double input)
 {
-    return(std::abs(input));
+	return(std::abs(input));
 }

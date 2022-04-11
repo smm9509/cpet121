@@ -12,9 +12,9 @@
 
 double square(double input)
 {
-    return input * input;
+	return input * input;
 }
 double cube(double input)
 {
-    return std::pow(input, 3);
+	return std::pow(input, 3);
 }
