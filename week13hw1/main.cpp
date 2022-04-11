@@ -1,12 +1,12 @@
-//	===============================================================
-//  Filename:		main.cpp
-//	Title:			Homework #1
-//	Course:			CPET.121.01/05-06 - Computational Prob Solving I
-//	Developer:		smm9509@rit.edu
-//	Date:			2022-04-06
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//  Title:          Homework #1
+//  Filename:	    main.cpp
+//  Course:         Computational Problem Solving CPET-121
+//  Developer:      smm9509@rit.edu
+//  Date:           2022-04-11
 //  Description:    write the average and sum of 25 vectors to file
-//	===============================================================
-
+//  
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #include <iostream>
 #include <fstream>
@@ -25,6 +25,8 @@ using std::getline;
 
 int main()
 {
+    //ths is my code 
+
     const int SIZE = 25;
     vector<double> vect(0);
     vect.reserve(SIZE);

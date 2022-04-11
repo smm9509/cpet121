@@ -1,11 +1,12 @@
-//	===============================================================
-//  Filename:		main.cpp
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Title:			Homework #3 - String File Input / Output
-//	Course:			CPET.121.01/05-06 - Computational Prob Solving I
+//  Filename:		main.cpp
+//  Course:         Computational Problem Solving CPET-121
 //	Developer:		smm9509@rit.edu
-//	Date:			2022-04-06
+//  Date:           2022-04-11
 //  Description:    calculate stuff from files
-//	===============================================================
+//  
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 #include <iostream>
 #include <fstream>
@@ -36,6 +37,8 @@ struct Employee
 
 int main()
 {
+    //this is my code
+
     ifstream inF;
     inF.open("pay_in.txt");
     if(inF.fail())

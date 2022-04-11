@@ -1,11 +1,12 @@
-//	===============================================================
-//  Filename:		main.cpp
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Title:			Homework #2 -Nursery Rhymes I/O Character Files
-//	Course:			CPET.121.01/05-06 - Computational Prob Solving I
+//  Filename:		main.cpp
+//  Course:         Computational Problem Solving CPET-121
 //	Developer:		smm9509@rit.edu
-//	Date:			2022-04-06
+//	Date:			2022-04-11
 //  Description:    make vowels uppercase
-//	===============================================================
+//  
+//  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 #include <iostream>
@@ -22,6 +23,8 @@ using std::string;
 
 int main()
 {
+    //this is my code
+    
     ifstream inF;
     inF.open("mary.txt");
     if(inF.fail())
