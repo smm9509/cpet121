@@ -39,4 +39,4 @@ void print(const std::string& text);
 //	Output:		prints gallows with relevant parts showing
 //	Purpose:	display part of game state to user
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void printGallows(const int status)
+void printGallows(const int status);
