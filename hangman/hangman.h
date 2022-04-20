@@ -8,3 +8,11 @@
 //	===============================================================
 
 #pragma once
+#include <string>
+
+//stringfuncts.cpp
+std::string replaceAll(
+    const std::string& text, 
+    const std::string& find, 
+    const std::string& replace
+);
