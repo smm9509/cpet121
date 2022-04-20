@@ -35,6 +35,13 @@ const char* ZONES_FOR_FAILS =
 "|"			"\n"
 "+------"	"\n";
 
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		printGallows
+//	Input: 		an integer 0 thru 8 indicating the number of
+//				mistakes the player has made
+//	Output:		prints gallows with relevant parts showing
+//	Purpose:	display part of game state to user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void printGallows(const int status)
 {
 	string gallows = string(COMPLETE_HANGMAN);
@@ -63,9 +70,23 @@ void printGallows(const int status)
 		assert("valid inputs are 0 thru 8"=="");
 		break;
 	}
+
+	print(gallows);
 }
 
 //modified version of replaceAll function
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		targetedReplace
+//	Input: 		places - will search in this string
+//				workArea - when found find in places, use 
+//					the index to replace in this string
+//				find - string to find
+//				replace - string to overwrite in workArea at 
+//					index
+//	Output:		overwrites some parts of workArea
+//	Purpose:	allow printGallows to work based on the const
+//				templates present.
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void targetedReplace(
     const string& places, 
 	string& workArea,

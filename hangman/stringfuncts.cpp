@@ -15,6 +15,13 @@
 
 using namespace std;
 
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		
+//	Input: 		
+//	Output:		
+//	Purpose:	
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 string replaceAll(
     const string& text, 
     const string& find, 

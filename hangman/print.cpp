@@ -13,6 +13,12 @@
 
 using namespace std;
 
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		print
+//	Input: 		a string
+//	Output:		print to console
+//	Purpose:	display things to the user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void print(const string& text)
 {
     cout << text << endl;
