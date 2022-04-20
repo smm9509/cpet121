@@ -11,9 +11,32 @@
 #pragma once
 #include <string>
 
-//stringfuncts.cpp
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		replaceALL
+//	Input: 		text body, text to find, replace found text with
+//	Output:		a string similar to body with text replaced the
+//              normal way
+//	Purpose:	find and replace
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 std::string replaceAll(
     const std::string& text, 
     const std::string& find, 
     const std::string& replace
 );
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		print
+//	Input: 		a string
+//	Output:		print to console
+//	Purpose:	display things to the user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void print(const std::string& text);
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		printGallows
+//	Input: 		an integer 0 thru 8 indicating the number of
+//				mistakes the player has made
+//	Output:		prints gallows with relevant parts showing
+//	Purpose:	display part of game state to user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void printGallows(const int status)

@@ -17,10 +17,11 @@ using namespace std;
 
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	Name: 		
-//	Input: 		
-//	Output:		
-//	Purpose:	
+//	Name: 		replaceALL
+//	Input: 		text body, text to find, replace found text with
+//	Output:		a string similar to body with text replaced the
+//              normal way
+//	Purpose:	find and replace
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 string replaceAll(
     const string& text, 
