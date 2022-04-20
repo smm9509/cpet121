@@ -8,12 +8,10 @@
 //	===============================================================
 
 #include "hangman.h"
-#include <iostream>
 
 int main()
 {
-    printf(replaceAll("I have 100 cats and 1000 dogs and"
-    " 100100100 nyans", "100", "%d").c_str(), 100, 100, 100, 100, 100);
+    
 
     return 0;
 }
