@@ -15,7 +15,7 @@
 //  Title:          hangman_extracredit
 //	Course:			CPET.121.01/05-06 - Computational Prob Solving I
 //	Developer:		smm9509@rit.edu
-//	Date:			2022-04-20
+//	Date:			2022-04-21
 //  Description:	
 //	===============================================================
 

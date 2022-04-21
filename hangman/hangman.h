@@ -40,3 +40,11 @@ void print(const std::string& text);
 //	Purpose:	display part of game state to user
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void printGallows(const int status);
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		userInput
+//	Input: 		user types a line of text
+//	Output:		returns the first character from that line
+//	Purpose:	get user guess
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+char userInput();
