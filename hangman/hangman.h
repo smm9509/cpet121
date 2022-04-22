@@ -10,6 +10,7 @@
 
 #pragma once
 #include <string>
+#include <vector>
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		replaceALL
@@ -48,3 +49,11 @@ void printGallows(const int status);
 //	Purpose:	get user guess
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 char userInput();
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		wordlist
+//	Input: 		filename (default "wordlist.txt")
+//	Output:		vector<string> containing each word
+//	Purpose:	allow external use of the list of words
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+const std::vector<std::string>& wordlist(const char* const filename = "wordlist.txt");
