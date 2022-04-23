@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const char* COMPLETE_HANGMAN = 
+const char* const COMPLETE_HANGMAN = 
 "+---+"		"\n"
 "|   |"		"\n"
 "|   O"		"\n"
@@ -25,7 +25,7 @@ const char* COMPLETE_HANGMAN =
 "|"			"\n"
 "+------"	"\n";
 
-const char* ZONES_FOR_FAILS = 
+const char* const ZONES_FOR_FAILS = 
 "+1111"		"\n"
 "|   2"		"\n"
 "|   3"		"\n"
