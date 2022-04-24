@@ -110,3 +110,19 @@ void targetedReplace(
 //	Purpose:	obfuscate answer from player
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 std::string convertToStars(const std::string& word);
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name:		log
+//	Input:		a string
+//	Output:		writes the string as a line to the output
+//	Purpose:	satisfy logging requirement
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void log(std::string& output);
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name:		closeLog
+//	Input:		none
+//	Output:		none
+//	Purpose:	close the ofstream object
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void closeLog();
