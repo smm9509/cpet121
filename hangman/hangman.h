@@ -81,3 +81,24 @@ const std::vector<std::string>& wordlist(const char* const filename = "wordlist.
 //	Purpose:	word for hangman
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 std::string randWord(const char* const filename = "wordlist.txt");
+
+
+//modified version of replaceAll function
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		targetedReplace
+//	Input: 		places - will search in this string
+//				workArea - when found find in places, use 
+//					the index to replace in this string
+//				find - string to find
+//				replace - string to overwrite in workArea at 
+//					index
+//	Output:		overwrites some parts of workArea
+//	Purpose:	allow printGallows to work based on the const
+//				templates present.
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void targetedReplace(
+    const string& places, 
+	string& workArea,
+    const string& find, 
+    const string& replace
+);
