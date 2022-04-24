@@ -63,6 +63,7 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 	loadWordlist(wordlist, filename);
 	currentlyLoaded = filename;
 
+
 	for(int i = 0; i < wordlist.size(); ++i)
 	{
 		string& word = wordlist.at(i);
@@ -75,7 +76,8 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 		{
 			//actually nvm don't lowercase it
 			//word.at(i) = tolower(word.at(i));
-			assert(isalpha(word.at(i)));//found non-alpha letter in word
+			//the following check should better occur elsewhere
+			//assert(isalpha(word.at(i)));//found non-alpha letter in word
 		}
 	}
 
