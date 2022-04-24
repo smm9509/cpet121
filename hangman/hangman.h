@@ -102,3 +102,11 @@ void targetedReplace(
     const string& find, 
     const string& replace
 );
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		convertToStars
+//	Input: 		a string with letters and spaces
+//	Output:		a string with asterisks and spaces
+//	Purpose:	obfuscate answer from player
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+string& convertToStars(const string& word);

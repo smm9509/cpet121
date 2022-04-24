@@ -56,3 +56,25 @@ void dispayWord(const string& word)
     print(line1);
     print(line2);
 }
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		convertToStars
+//	Input: 		a string with letters and spaces
+//	Output:		a string with asterisks and spaces
+//	Purpose:	obfuscate answer from player
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+string& convertToStars(const string& word)
+{
+    string output = "";
+    output.reserve(word.size());
+    for(int i = 0; i < word.size(); i++)
+    {
+        if(word.at(i) != ' ')
+        {
+            output.push_back('*');
+        } else {
+            output.push_back(' ');
+        }
+    }
+    return output;
+}
