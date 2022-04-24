@@ -24,7 +24,7 @@ using namespace std;
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 char userInput()
 {
-	cin.ignore();
+	//cin.ignore(); //this function doesn't help, I think.
 	string temp;
 	getline(cin, temp);
 	return temp.c_str()[0];
