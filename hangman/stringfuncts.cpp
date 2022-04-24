@@ -26,7 +26,8 @@ using namespace std;
 string replaceAll(
     const string& text, 
     const string& find, 
-    const string& replace
+    const string& replace,
+    int& numReplaced // = 0
 )
 {
     string str = text; //copy the string
@@ -44,6 +45,7 @@ string replaceAll(
 
         //replace what was found
         str.replace(index, find.size(), replace);
+        numReplaced++;
 
         //advance the index so that the replaced text is 
         //not searched
