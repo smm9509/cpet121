@@ -43,7 +43,8 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 		//lowercase every letter in the word
 		for(int j = 0; j < word.size(); ++j)
 		{
-			word.at(i) = tolower(word.at(i));
+			//actually nvm don't lowercase it
+			//word.at(i) = tolower(word.at(i));
 			assert(isalpha(word.at(i)));//found non-alpha letter in word
 		}
 	}
