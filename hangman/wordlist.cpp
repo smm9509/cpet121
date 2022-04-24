@@ -17,6 +17,34 @@
 
 using namespace std;
 
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		loadWordlist
+//	Input: 		filename (default "wordlist.txt")
+//	Output:		vector<string> containing each word
+//	Purpose:	read file in order to load the list into mem
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void loadWordlist(vector<string>& loadTo, const char* const filename)
+{
+	loadTo = vector<string>(0);
+	ifstream in_file;
+	in_file.open(filename);
+	assert(!in_file.fail()); //exit if file failed to open
+	while(true) //break in middle
+	{
+		string input;
+		in_file >> input;
+
+		if( in_file.eof() )
+		{
+			break;
+		}
+
+		loadTo.push_back(input);
+	}
+	in_file.close();
+}
+
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		wordlist
 //	Input: 		filename (default "wordlist.txt")
@@ -50,31 +78,4 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 	}
 
 	return wordlist;
-}
-
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	Name: 		loadWordlist
-//	Input: 		filename (default "wordlist.txt")
-//	Output:		vector<string> containing each word
-//	Purpose:	read file in order to load the list into mem
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void loadWordlist(vector<string>& loadTo, const char* const filename)
-{
-	loadTo = vector<string>(0);
-	ifstream in_file;
-	in_file.open(filename);
-	assert(!in_file.fail()); //exit if file failed to open
-	while(true) //break in middle
-	{
-		string input;
-		in_file >> input;
-
-		if( in_file.eof() )
-		{
-			break;
-		}
-
-		loadTo.push_back(input);
-	}
-	in_file.close();
 }
