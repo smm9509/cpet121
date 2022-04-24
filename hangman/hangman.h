@@ -117,7 +117,7 @@ std::string convertToStars(const std::string& word);
 //	Output:		writes the string as a line to the output
 //	Purpose:	satisfy logging requirement
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void log(std::string& output);
+void log(const std::string& output);
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name:		closeLog

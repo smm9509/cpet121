@@ -45,7 +45,7 @@ ofstream& logFile(const char* const filename = "results_1.txt")
 //	Output:		writes the string as a line to the output
 //	Purpose:	satisfy logging requirement
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void log(string& output)
+void log(const string& output)
 {
 	logFile() << output << endl;
 }
