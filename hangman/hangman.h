@@ -109,4 +109,4 @@ void targetedReplace(
 //	Output:		a string with asterisks and spaces
 //	Purpose:	obfuscate answer from player
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-std::string& convertToStars(const std::string& word);
+std::string convertToStars(const std::string& word);
