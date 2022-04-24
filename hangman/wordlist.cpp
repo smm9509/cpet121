@@ -90,5 +90,8 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 string randWord(const char* const filename /*= "wordlist.txt"*/)
 {
-
+	srand(time(NULL));
+	vector<string> list = wordlist();
+	size_t i = rand() % list.size();
+	return list.at(i);
 }

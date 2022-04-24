@@ -22,7 +22,8 @@
 std::string replaceAll(
     const std::string& text, 
     const std::string& find, 
-    const std::string& replace
+    const std::string& replace,
+    int& numReplaced
 );
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -72,3 +73,11 @@ char userInput();
 //	Purpose:	allow external use of the list of words
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 const std::vector<std::string>& wordlist(const char* const filename = "wordlist.txt");
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		randWord
+//	Input: 		filename of word list
+//	Output:		picks a random word
+//	Purpose:	word for hangman
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+std::string randWord(const char* const filename = "wordlist.txt");
