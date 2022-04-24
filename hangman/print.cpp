@@ -23,3 +23,36 @@ void print(const string& text)
 {
     cout << text << endl;
 }
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		displayWord
+//	Input: 		a string with a format
+//              l e * * e r   w o r d
+//              depending on which letters have been guessed
+//              does not need to have that spacing to work as
+//              intended, although it will display differently
+//	Output:		puts the word in the format
+//              * * * * * 
+//              _ _ _ _ _
+//              in the console
+//	Purpose:	display the word game state to the user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void dispayWord(const string& word)
+{
+    string line1 = "";
+    string line2 = "";
+    line1.reserve(word.size());
+    line2.reserve(word.size());
+    for(int i = 0; i < word.size(); i++)
+    {
+        line1.push_back(word.at(i));
+        if(word.at(i) != ' ')
+        {
+            line2.push_back('_');
+        } else {
+            line2.push_back(' ');
+        }
+    }
+    print(line1);
+    print(line2);
+}

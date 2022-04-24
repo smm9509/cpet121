@@ -34,6 +34,21 @@ std::string replaceAll(
 void print(const std::string& text);
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		displayWord
+//	Input: 		a string with a format
+//              l e * * e r   w o r d
+//              depending on which letters have been guessed
+//              does not need to have that spacing to work as
+//              intended, although it will display differently
+//	Output:		puts the word in the format
+//              * * * * * 
+//              _ _ _ _ _
+//              in the console
+//	Purpose:	display the word game state to the user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void dispayWord(const std::string& word);
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //	Name: 		printGallows
 //	Input: 		an integer 0 thru 8 indicating the number of
 //				mistakes the player has made
