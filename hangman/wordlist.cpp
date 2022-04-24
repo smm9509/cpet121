@@ -67,7 +67,9 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 	{
 		string& word = wordlist.at(i);
 		// remove spaces
-		word = replaceAll(word, " ", "");
+		//wait no don't remove spaces
+		int temp;
+		//word = replaceAll(word, " ", "", temp);
 		//lowercase every letter in the word
 		for(int j = 0; j < word.size(); ++j)
 		{
@@ -78,4 +80,15 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 	}
 
 	return wordlist;
+}
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		randWord
+//	Input: 		filename of word list
+//	Output:		picks a random word
+//	Purpose:	word for hangman
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+string randWord(const char* const filename /*= "wordlist.txt"*/)
+{
+
 }
