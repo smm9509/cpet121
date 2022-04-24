@@ -63,24 +63,6 @@ const vector<string>& wordlist(const char* const filename /*= "wordlist.txt"*/)
 	loadWordlist(wordlist, filename);
 	currentlyLoaded = filename;
 
-
-	for(int i = 0; i < wordlist.size(); ++i)
-	{
-		string& word = wordlist.at(i);
-		// remove spaces
-		//wait no don't remove spaces
-		int temp;
-		//word = replaceAll(word, " ", "", temp);
-		//lowercase every letter in the word
-		for(int j = 0; j < word.size(); ++j)
-		{
-			//actually nvm don't lowercase it
-			//word.at(i) = tolower(word.at(i));
-			//the following check should better occur elsewhere
-			//assert(isalpha(word.at(i)));//found non-alpha letter in word
-		}
-	}
-
 	return wordlist;
 }
 
