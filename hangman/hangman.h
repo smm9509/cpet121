@@ -97,10 +97,10 @@ std::string randWord(const char* const filename = "wordlist.txt");
 //				templates present.
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void targetedReplace(
-    const string& places, 
-	string& workArea,
-    const string& find, 
-    const string& replace
+    const std::string& places, 
+	std::string& workArea,
+    const std::string& find, 
+    const std::string& replace
 );
 
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -109,4 +109,4 @@ void targetedReplace(
 //	Output:		a string with asterisks and spaces
 //	Purpose:	obfuscate answer from player
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-string& convertToStars(const string& word);
+std::string& convertToStars(const std::string& word);
