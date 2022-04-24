@@ -35,44 +35,6 @@ const char* const ZONES_FOR_FAILS =
 "|"			"\n"
 "+------"	"\n";
 
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//	Name: 		printGallows
-//	Input: 		an integer 0 thru 8 indicating the number of
-//				mistakes the player has made
-//	Output:		prints gallows with relevant parts showing
-//	Purpose:	display part of game state to user
-//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-void printGallows(const int status)
-{
-	string gallows = string(COMPLETE_HANGMAN);
-
-	switch (status)
-	{
-	case 0:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "1", " ");
-	case 1:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "2", " ");
-	case 2:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "3", " ");
-	case 3:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "4", " ");
-	case 4:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "5", " ");
-	case 5:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "6", " ");
-	case 6:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "7", " ");
-	case 7:
-		targetedReplace(ZONES_FOR_FAILS, gallows, "8", " ");
-	case 8:
-		break;	
-	default:
-		assert("valid inputs are 0 thru 8"=="");
-		break;
-	}
-
-	print(gallows);
-}
 
 //modified version of replaceAll function
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -113,4 +75,43 @@ void targetedReplace(
         //advance the index to not replace the same thing over and over again
         index += find.size();
     }
+}
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name: 		printGallows
+//	Input: 		an integer 0 thru 8 indicating the number of
+//				mistakes the player has made
+//	Output:		prints gallows with relevant parts showing
+//	Purpose:	display part of game state to user
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+void printGallows(const int status)
+{
+	string gallows = string(COMPLETE_HANGMAN);
+
+	switch (status)
+	{
+	case 0:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "1", " ");
+	case 1:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "2", " ");
+	case 2:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "3", " ");
+	case 3:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "4", " ");
+	case 4:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "5", " ");
+	case 5:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "6", " ");
+	case 6:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "7", " ");
+	case 7:
+		targetedReplace(ZONES_FOR_FAILS, gallows, "8", " ");
+	case 8:
+		break;	
+	default:
+		assert("valid inputs are 0 thru 8"=="");
+		break;
+	}
+
+	print(gallows);
 }
