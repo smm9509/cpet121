@@ -1,0 +1,31 @@
+the chosen word is predye.
+
+The character p was found!
+The character r was found!
+The character e was found!
+The character d was found!
+The character y was found!
+
+The user successfully found the word.
+the chosen word is CMBS.
+
+The character c was found!
+The character m was found!
+The character b was found!
+The character s was found!
+
+The user successfully found the word.
+the chosen word is chop.
+
+The character a was not found! The error count is 1.
+The character b was not found! The error count is 2.
+The character c was found!
+The character d was not found! The error count is 3.
+The character e was not found! The error count is 4.
+The character f was not found! The error count is 5.
+The character g was not found! The error count is 6.
+The character h was found!
+The character i was not found! The error count is 7.
+The character j was not found! The error count is 8.
+
+The user failed to find the word.
