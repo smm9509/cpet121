@@ -133,4 +133,4 @@ void closeLog();
 //	Output:     a string with lowercase letters
 //	Purpose:    help with guessing uppercase letters
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-string lowerString(const string& mixedString);
+std::string lowerString(const std::string& mixedString);
