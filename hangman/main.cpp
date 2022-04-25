@@ -139,7 +139,7 @@ int main()
                 int temp;
                 print("The test word was " + 
                     replaceAll(word, " ", "", temp));
-                print("ENTER anything to continue."); userInput();
+                print("\nENTER anything to continue."); userInput();
                 break;
             }
             bool validguess = false;
