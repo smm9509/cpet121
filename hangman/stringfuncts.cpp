@@ -69,4 +69,5 @@ string lowerString(const string& mixedString)
     {
         temp.push_back(tolower(mixedString.at(i)));
     }
+    return temp;
 }
