@@ -126,3 +126,11 @@ void log(const std::string& output);
 //	Purpose:	close the ofstream object
 //	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void closeLog();
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name:       lowerString
+//	Input:      a string with letters
+//	Output:     a string with lowercase letters
+//	Purpose:    help with guessing uppercase letters
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+string lowerString(const string& mixedString);

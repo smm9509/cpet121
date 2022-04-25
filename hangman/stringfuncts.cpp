@@ -53,3 +53,20 @@ string replaceAll(
     }
     return str;
 }
+
+
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//	Name:       lowerString
+//	Input:      a string with letters
+//	Output:     a string with lowercase letters
+//	Purpose:    help with guessing uppercase letters
+//	+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+string lowerString(const string& mixedString)
+{
+    string temp = "";
+    temp.reserve(mixedString.size());
+    for(int i = 0; i < mixedString.size(); ++i)
+    {
+        temp.push_back(tolower(mixedString.at(i)));
+    }
+}
